@@ -31,25 +31,40 @@ public class Main {
         for (Rectangle rectangle : rectangles) {
             System.out.println(rectangle);
         }
-        
-       Geometry[] geometries = new Geometry[6];
+
+        Geometry[] geometries = new Geometry[6];
         geometries[0] = new Circle(3.3);
         geometries[1] = new Circle(2.2, "white", false);
         geometries[2] = new Circle();
         geometries[3] = new Rectangle();
         geometries[4] = new Rectangle(2, 4);
-        geometries[5] = new Rectangle("red", true, 6,8);
+        geometries[5] = new Rectangle("red", true, 6, 8);
         System.out.println("pre resize - arrays : ");
-        for (Geometry geometry : geometries){
+        for (Geometry geometry : geometries) {
             System.out.println(geometry);
         }
-        for (Geometry geometry : geometries){
+        for (Geometry geometry : geometries) {
             double percent = Math.ceil(Math.random() * 100);
             geometry.resize(percent);
         }
         System.out.println("after resize - arrays : ");
-        for (Geometry geometry : geometries){
+        for (Geometry geometry : geometries) {
             System.out.println(geometry);
+        }
+
+        Geometry[] geometries2 = new Geometry[6];
+        geometries2[0] = new Circle(3.3);
+        geometries2[1] = new Circle(2.2, "white", false);
+        geometries2[2] = new Square(3.3, "grey", true);
+        geometries2[3] = new Square(2.2);
+        geometries2[4] = new Rectangle(2, 4);
+        geometries2[5] = new Rectangle("red", true, 6, 8);
+        for (Geometry geometry : geometries2) {
+            if (geometry instanceof Square) {
+                ((Square) geometry).howToColor();
+            } else {
+                System.out.println(geometry);
+            }
         }
     }
 }
