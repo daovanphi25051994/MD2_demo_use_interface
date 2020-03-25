@@ -7,7 +7,8 @@ public class Circle {
 
     public Circle() {
     }
-    public Circle(double radius){
+
+    public Circle(double radius) {
         this.radius = radius;
     }
 
@@ -48,8 +49,9 @@ public class Circle {
     public double getArea() {
         return (Math.PI * this.radius * this.radius);
     }
+
     @Override
-    public String toString(){
-        return "a circle: radius = "+this.radius+" ; color = "+this.color+" ; filled = "+this.filled;
+    public String toString() {
+        return "a circle: radius = " + this.radius + " ; color = " + this.color + " ; filled = " + this.filled;
     }
 }
