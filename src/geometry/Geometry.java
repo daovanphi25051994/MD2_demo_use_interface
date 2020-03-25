@@ -31,7 +31,7 @@ public abstract class Geometry {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
-
+    public abstract void resize(double percent);
     @Override
     public String toString() {
         return "color: " + this.color + " ; filled = " + this.filled;

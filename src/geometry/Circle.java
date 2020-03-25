@@ -1,6 +1,6 @@
 package geometry;
 
-public class Circle extends Geometry {
+public class Circle extends Geometry implements Resizeable {
     private double radius = 1;
 
     public Circle() {
@@ -32,7 +32,11 @@ public class Circle extends Geometry {
             return 0;
         }
     }
+    @Override
+    public void resize(double percent){
+        this.radius += (this.radius * percent) / 100;
 
+    }
     @Override
     public double getPerimeter() {
         return (2 * Math.PI * this.radius);

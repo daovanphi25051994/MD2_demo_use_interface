@@ -1,6 +1,6 @@
 package geometry;
 
-public class Rectangle extends Geometry {
+public class Rectangle extends Geometry implements Resizeable {
     private double length = 1;
     private double width = 1;
 
@@ -53,7 +53,11 @@ public class Rectangle extends Geometry {
     public double getArea() {
         return (this.length * this.width);
     }
-
+    @Override
+    public void resize(double percent){
+        this.width += (this.width * Math.sqrt(percent)) / 100;
+        this.length += (this.length * Math.sqrt(percent)) / 100;
+    }
     @Override
     public String toString() {
         return "a rectangle with length = " + this.length
