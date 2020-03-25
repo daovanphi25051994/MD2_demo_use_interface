@@ -1,9 +1,7 @@
 package geometry;
 
-public class Circle {
+public class Circle extends Geometry {
     private double radius = 1;
-    private String color = "black";
-    private boolean filled = true;
 
     public Circle() {
     }
@@ -13,45 +11,44 @@ public class Circle {
     }
 
     public Circle(double radius, String color, boolean filled) {
+        super(color, filled);
         this.radius = radius;
-        this.color = color;
-        this.filled = filled;
     }
 
     public double getRadius() {
         return radius;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public boolean isFilled() {
-        return filled;
-    }
-
     public void setRadius(double radius) {
         this.radius = radius;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public int compareTo(Circle circle) {
+        if (this.getRadius() > circle.getRadius()) {
+            return 1;
+        } else if (this.getRadius() < circle.getRadius()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
-    public void setFilled(boolean filled) {
-        this.filled = filled;
-    }
-
+    @Override
     public double getPerimeter() {
         return (2 * Math.PI * this.radius);
     }
 
+    @Override
     public double getArea() {
         return (Math.PI * this.radius * this.radius);
     }
 
     @Override
     public String toString() {
-        return "a circle: radius = " + this.radius + " ; color = " + this.color + " ; filled = " + this.filled;
+        return "a circle: radius = " + this.radius
+                + " ; color = " + super.getColor()
+                + " ; filled = " + super.isFilled()
+                + "; perimeter = " + this.getPerimeter()
+                + " ; area = " + this.getArea();
     }
 }
