@@ -1,6 +1,8 @@
 package geometry;
 
-public class Rectangle extends Geometry implements Resizeable {
+import java.util.Scanner;
+
+public class Rectangle extends Geometry {
     private double length = 1;
     private double width = 1;
 
@@ -34,16 +36,6 @@ public class Rectangle extends Geometry implements Resizeable {
         this.width = width;
     }
 
-    public int compareTo(Rectangle rectangle) {
-        if (this.getArea() > rectangle.getArea()) {
-            return 1;
-        } else if (this.getArea() < rectangle.getArea()) {
-            return -1;
-        } else {
-            return 0;
-        }
-    }
-
     @Override
     public double getPerimeter() {
         return ((this.length + this.width) * 2);
@@ -53,11 +45,7 @@ public class Rectangle extends Geometry implements Resizeable {
     public double getArea() {
         return (this.length * this.width);
     }
-    @Override
-    public void resize(double percent){
-        this.width += (this.width * Math.sqrt(percent)) / 100;
-        this.length += (this.length * Math.sqrt(percent)) / 100;
-    }
+
     @Override
     public String toString() {
         return "a rectangle with length = " + this.length
@@ -66,5 +54,36 @@ public class Rectangle extends Geometry implements Resizeable {
                 + " ; filled = " + super.isFilled()
                 + "; perimeter = " + this.getPerimeter()
                 + " ; area = " + this.getArea();
+    }
+
+    @Override
+    public void inputData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter length = ");
+        this.length = scanner.nextDouble();
+        System.out.println("Enter width = ");
+        scanner.nextLine();
+        this.width = scanner.nextDouble();
+        System.out.println("Enter color  = ");
+        scanner.nextLine();
+        this.setColor(scanner.nextLine());
+        System.out.println("is fill ?  = ");
+        this.setFilled(scanner.nextBoolean());
+    }
+
+    @Override
+    public void resize(double percent) {
+        this.width += (this.width * Math.sqrt(percent)) / 100;
+        this.length += (this.length * Math.sqrt(percent)) / 100;
+    }
+
+    public int compareTo(Rectangle rectangle) {
+        if (this.getArea() > rectangle.getArea()) {
+            return 1;
+        } else if (this.getArea() < rectangle.getArea()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }

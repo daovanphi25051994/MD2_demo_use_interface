@@ -12,10 +12,6 @@ public abstract class Geometry {
         this.filled = filled;
     }
 
-    public abstract double getPerimeter();
-
-    public abstract double getArea();
-
     public String getColor() {
         return color;
     }
@@ -31,9 +27,18 @@ public abstract class Geometry {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
-    public abstract void resize(double percent);
+
     @Override
     public String toString() {
-        return "color: " + this.color + " ; filled = " + this.filled;
+        return "color: " + this.color
+                + " ; filled = " + this.filled;
     }
+
+    public abstract void inputData();
+
+    public abstract void resize(double percent);
+
+    public abstract double getPerimeter();
+
+    public abstract double getArea();
 }

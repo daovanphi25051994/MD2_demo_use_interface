@@ -1,6 +1,8 @@
 package geometry;
 
-public class Circle extends Geometry implements Resizeable {
+import java.util.Scanner;
+
+public class Circle extends Geometry {
     private double radius = 1;
 
     public Circle() {
@@ -23,20 +25,6 @@ public class Circle extends Geometry implements Resizeable {
         this.radius = radius;
     }
 
-    public int compareTo(Circle circle) {
-        if (this.getRadius() > circle.getRadius()) {
-            return 1;
-        } else if (this.getRadius() < circle.getRadius()) {
-            return -1;
-        } else {
-            return 0;
-        }
-    }
-    @Override
-    public void resize(double percent){
-        this.radius += (this.radius * percent) / 100;
-
-    }
     @Override
     public double getPerimeter() {
         return (2 * Math.PI * this.radius);
@@ -54,5 +42,33 @@ public class Circle extends Geometry implements Resizeable {
                 + " ; filled = " + super.isFilled()
                 + "; perimeter = " + this.getPerimeter()
                 + " ; area = " + this.getArea();
+    }
+
+    @Override
+    public void inputData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter radius = ");
+        this.radius = scanner.nextDouble();
+        System.out.println("Enter color = ");
+        scanner.nextLine();
+        this.setColor(scanner.nextLine());
+        System.out.println("is fill ?  = ");
+        this.setFilled(scanner.nextBoolean());
+    }
+
+    @Override
+    public void resize(double percent) {
+        this.radius += (this.radius * percent) / 100;
+
+    }
+
+    public int compareTo(Circle circle) {
+        if (this.getRadius() > circle.getRadius()) {
+            return 1;
+        } else if (this.getRadius() < circle.getRadius()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
